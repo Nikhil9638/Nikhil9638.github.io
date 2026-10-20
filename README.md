@@ -4,7 +4,7 @@ A single-page portfolio for Nikhil Modi, a B.Sc. IT student focused on Python, D
 
 Plain HTML, CSS and a little JavaScript: no framework, build step, package manager, backend, analytics or third-party requests.
 
-> **Status:** Phases 1–5 complete (design, all sections, accessibility and QA). Not yet published: the GitHub Pages address still needs to be confirmed. See [Before you publish](#before-you-publish).
+> **Status:** Phases 1–6 complete and ready to publish at **https://nikhil9638.github.io/** (repository `Nikhil9638.github.io`). Not deployed yet.
 
 ## Files
 
@@ -35,32 +35,43 @@ python -m http.server 8000
 
 Open <http://localhost:8000> and stop the server with `Ctrl+C`. Opening `index.html` directly also works, but a server matches how GitHub Pages serves the site.
 
-## Before you publish
+## Site address and metadata
 
-Link previews and canonical URLs need the site's absolute address, which is not confirmed yet. In `index.html`, find the comment that starts `PUBLISHING URL NOT CONFIRMED YET` and:
+The site is configured for the GitHub Pages **user site** `https://nikhil9638.github.io/`, published from the repository **`Nikhil9638.github.io`**.
 
-1. Replace every `SITE_URL` with the real address, keeping the trailing slash, e.g. `https://nikhil9638.github.io/`.
-2. Move the four tags (`canonical`, `og:url`, `og:image`, `twitter:image`) out of the comment.
-3. After publishing, paste the URL into LinkedIn's [Post Inspector](https://www.linkedin.com/post-inspector/) to check the preview image.
+Only four tags in the `<head>` of `index.html` use absolute URLs, because link previews and search engines require them:
 
-Everything else (title, description, Open Graph text, icons, robots) is already in place.
+| Tag | Value |
+|---|---|
+| `link rel="canonical"` | `https://nikhil9638.github.io/` |
+| `og:url` | `https://nikhil9638.github.io/` |
+| `og:image` | `https://nikhil9638.github.io/public/assets/og/og-image.png` |
+| `twitter:image` | `https://nikhil9638.github.io/public/assets/og/og-image.png` |
+
+Every other path (styles, script, fonts, icons, screenshots) is relative, so the site also previews correctly from a local server. If the address ever changes, update those four values and nothing else.
 
 ## Deploying to GitHub Pages
 
-Planned address: `https://nikhil9638.github.io/`. That requires a repository named exactly **`Nikhil9638.github.io`** on the `Nikhil9638` account.
+Nothing has been pushed or published yet. When you are ready:
 
-1. On GitHub, create a new **public** repository named `Nikhil9638.github.io`. Do not add a README, licence or `.gitignore` (this folder already has them).
-2. Complete [Before you publish](#before-you-publish) and commit that change.
-3. Connect this folder and push:
+1. **Create the repository.** On GitHub, signed in as `Nikhil9638`, create a new **public** repository named exactly `Nikhil9638.github.io`. Leave "Add a README", ".gitignore" and "licence" unticked; this folder already has its files.
+2. **Push this folder** (it already has the commits; `prompt.md` and `brag.mp4` are ignored and will not be uploaded):
    ```bash
    git remote add origin https://github.com/Nikhil9638/Nikhil9638.github.io.git
    git push -u origin main
    ```
-4. In the repository, open **Settings → Pages**. Under **Build and deployment**, choose **Deploy from a branch**, branch **`main`**, folder **`/ (root)`**, then **Save**.
-5. Wait for the **pages build and deployment** run under the **Actions** tab to finish (usually a minute or two), then open the address.
-6. Check the live site: the menu on a phone, each nav link, both email buttons, the GitHub and LinkedIn links, and the link preview.
+3. **Turn on Pages.** In the repository: **Settings → Pages → Build and deployment**. Set **Source** to **Deploy from a branch**, **Branch** to **`main`** and the folder to **`/ (root)`**, then **Save**.
+4. **Wait for the build.** The **Actions** tab shows a "pages build and deployment" run; when it is green (usually one or two minutes), open <https://nikhil9638.github.io/>.
+5. **Check the live site:**
+   - The page, fonts and screenshots load, and the address bar shows HTTPS. If **Settings → Pages** offers **Enforce HTTPS**, turn it on.
+   - On a phone: the Menu button opens and closes, and each link reaches its section.
+   - Both contact buttons and "Discuss this project" open an email to `nikhilmodi9638@gmail.com`; the GitHub, LinkedIn and Hunter System links open the right pages.
+   - <https://nikhil9638.github.io/public/assets/og/og-image.png> shows the preview image.
+   - Paste the site address into LinkedIn's [Post Inspector](https://www.linkedin.com/post-inspector/) to confirm the title, description and image.
 
-To publish under a different repository name instead, the address becomes `https://nikhil9638.github.io/<repository-name>/`; use that as `SITE_URL`.
+### Updating the site later
+
+Edit the files, preview locally, then commit and push to `main`; GitHub Pages republishes automatically within a few minutes.
 
 ## Content and assets
 
