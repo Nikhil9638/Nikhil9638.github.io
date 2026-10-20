@@ -8,3 +8,16 @@ desktop.ini
 
 # Local build instructions, not website content
 prompt.md
+
+# Local environment files and secrets
+.env
+.env.*
+*.pem
+*.key
+
+# Local-only reports, logs and test output
+*.log
+/qa/
+/reports/
+/test-results/
+/screenshots/
