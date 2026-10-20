@@ -1,16 +1,18 @@
 /* ==========================================================================
    Nikhil Modi — portfolio
    1. Fonts   2. Tokens   3. Reset & base   4. Layout   5. Utilities
-   6. Buttons   7. Header & navigation   8. Hero   9. Section heads
+   6. Buttons   7. Header & navigation   8. Hero   9. Section titles
    10. Case studies (shared)   11. Velora 2   12. Hunter System
-   13. Skills   14. About   15. Education   16. Services   17. Contact   18. Footer
+   13. About   14. Skills   15. Education   16. Services   17. Contact   18. Footer
    ========================================================================== */
 
-/* 1. Fonts — self-hosted, SIL OFL 1.1 (licences in public/assets/fonts/) */
+/* 1. Fonts — self-hosted, SIL OFL 1.1 (licences in public/assets/fonts/).
+   Bricolage includes its width axis (75–100%) for the condensed display type. */
 @font-face {
   font-family: "Bricolage Grotesque";
-  src: url("public/assets/fonts/bricolage-grotesque-latin-var.woff2") format("woff2");
-  font-weight: 400 800;
+  src: url("public/assets/fonts/bricolage-grotesque-latin-wdth-var.woff2") format("woff2");
+  font-weight: 200 800;
+  font-stretch: 75% 100%;
   font-style: normal;
   font-display: swap;
 }
@@ -25,32 +27,33 @@
 
 /* 2. Tokens */
 :root {
-  /* Colour — deep navy surfaces, one amber accent. All text pairs pass WCAG AAA. */
-  --night: #0E1521;        /* page background */
-  --deck: #141D2B;         /* section / card surface */
-  --rail: #1B2537;         /* raised surface, hover */
-  --line: #2A3648;         /* hairlines and dividers */
-  --line-strong: #3A4860;  /* emphasised dividers (decorative) */
-  --line-control: #62718B; /* borders that identify a control: 3.1:1+ on every surface (WCAG 1.4.11) */
-  --paper: #E9EDF3;        /* primary text (15.6:1 on night) */
-  --fog: #A3AEBF;          /* secondary text (8.2:1 on night) */
-  --amber: #F2A541;        /* accent: CTAs, the order path, focus (8.9:1 on night) */
-  --amber-hi: #F7BA67;     /* accent hover */
-  --on-amber: #0E1521;     /* text on amber */
+  /* Colour — near-black, white, and one crimson used in three roles.
+     Text pairs pass WCAG AA (most AAA); see the ratios beside each value. */
+  --ink: #080809;          /* page background */
+  --surface: #111113;      /* panels: Hunter System, mobile menu */
+  --surface-2: #19191C;    /* raised surface, hover */
+  --line: #303034;         /* decorative hairlines only */
+  --line-control: #6E696E; /* borders that identify a control: 3.27:1+ on every surface (WCAG 1.4.11) */
+  --paper: #F5F3F3;        /* primary text: 18.1:1 on ink */
+  --muted: #A5A0A3;        /* secondary text: 6.8–7.8:1 */
+  --crimson: #E52535;      /* graphics and large type only: giant word, rules, numerals (3.9–4.4:1) */
+  --crimson-text: #FF4D5B; /* small red text: 5.4–6.2:1 */
+  --crimson-deep: #C21C2B; /* primary button fill; white text on it is 5.44:1 */
+  --crimson-hover: #D01F2F;/* primary button hover; white text on it is 4.85:1 */
 
   /* Type */
-  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque", "Arial Narrow", "Segoe UI", system-ui, sans-serif;
   --font-body: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
 
-  /* Major-third scale (1.25) on a 17px body; display sizes are fluid */
-  --step--1: 0.875rem;                          /* 14px  captions, meta */
-  --step-0: 1.0625rem;                          /* 17px  body */
-  --step-1: 1.3125rem;                          /* 21px  lead, h4 */
-  --step-2: clamp(1.4rem, 1.2rem + 0.8vw, 1.65rem);    /* h3 */
-  --step-3: clamp(1.75rem, 1.35rem + 1.8vw, 2.6rem);   /* h2 */
-  --step-4: clamp(2.6rem, 1.6rem + 5vw, 5.5rem);       /* hero name */
+  --step--1: 0.875rem;                                  /* 14px captions, labels */
+  --step-0: 1.0625rem;                                  /* 17px body */
+  --step-1: 1.3125rem;                                  /* 21px lead */
+  --step-2: clamp(1.45rem, 1.2rem + 0.9vw, 1.85rem);    /* h3, statements */
+  --step-3: clamp(2.6rem, 1.5rem + 4.4vw, 5.25rem);     /* condensed section titles */
+  --step-name: clamp(4rem, 1.5rem + 9.4vw, 8.5rem);     /* hero name */
+  --step-word: clamp(6.5rem, 32vw, 32rem);              /* the giant PORTFOLIO word: slightly wider than the screen, so it crops */
 
-  --leading-tight: 1.05;
+  --leading-tight: 0.88;
   --leading-heading: 1.15;
   --leading-body: 1.6;
   --measure: 65ch;
@@ -65,23 +68,21 @@
   --space-7: 3rem;
   --space-8: 4rem;
   --space-9: 6rem;
-  --section-gap: clamp(4rem, 2.5rem + 6vw, 8rem);
+  --section-gap: clamp(4.5rem, 3rem + 6vw, 9rem);
 
   /* Layout */
-  --container: 74rem;      /* 1184px */
+  --container: 76rem;      /* 1216px */
   --gutter: clamp(1rem, 0.5rem + 2.5vw, 2.5rem);
 
-  /* Shape — radius follows hierarchy: feature > card > control */
-  --radius-feature: 1.25rem;
-  --radius-card: 0.75rem;
-  --radius-control: 0.5rem;
+  /* Shape — mostly sharp; screenshots keep a small radius so they read as screens */
+  --radius-shot: 0.625rem;
+  --radius-control: 0.25rem;
   --radius-pill: 999px;
 
-  /* Depth — used sparingly, for framed screenshots only */
-  --shadow-frame: 0 1px 0 rgb(255 255 255 / 0.04) inset, 0 24px 48px -24px rgb(0 0 0 / 0.6);
+  --shadow-shot: 0 30px 60px -28px rgb(0 0 0 / 0.85);
 
-  /* Focus */
-  --focus-ring: 0 0 0 2px var(--night), 0 0 0 4px var(--amber);
+  /* Focus: white ring with an ink gap, visible on every surface and on red */
+  --focus-ring: 0 0 0 2px var(--ink), 0 0 0 4px var(--paper);
 
   /* Motion */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
@@ -111,7 +112,7 @@ html {
 
 body {
   min-height: 100vh;
-  background-color: var(--night);
+  background-color: var(--ink);
   color: var(--paper);
   font-family: var(--font-body);
   font-size: var(--step-0);
@@ -128,20 +129,8 @@ h4 {
   font-family: var(--font-display);
   font-weight: 650;
   line-height: var(--leading-heading);
-  letter-spacing: -0.015em;
+  letter-spacing: -0.01em;
   text-wrap: balance;
-}
-
-h1 {
-  font-size: var(--step-4);
-  font-weight: 700;
-  line-height: var(--leading-tight);
-  letter-spacing: -0.02em;
-}
-
-h2 {
-  font-size: var(--step-3);
-  letter-spacing: -0.02em;
 }
 
 h3 {
@@ -190,8 +179,24 @@ textarea {
 }
 
 ::selection {
-  background: var(--amber);
-  color: var(--on-amber);
+  background: var(--crimson-deep);
+  color: var(--paper);
+}
+
+/* Condensed uppercase display type: the giant word, the name, section titles, numerals */
+.hero-word,
+.hero-name,
+.section-title h2,
+.case-index,
+.role h4,
+.result-value,
+.contact-display {
+  font-family: var(--font-display);
+  font-stretch: 75%;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+  line-height: var(--leading-tight);
 }
 
 /* 4. Layout */
@@ -211,12 +216,12 @@ textarea {
 /* Single-column grids may shrink below their longest word (large text, narrow screens).
    Multi-column layouts for wider screens are set later and override this. */
 .hero-grid,
+.about-body,
 .case-head,
 .role,
 .case-foot,
 .hunter-body,
 .hunter-detail,
-.about,
 .edu,
 .contact {
   grid-template-columns: minmax(0, 1fr);
@@ -241,8 +246,8 @@ textarea {
   left: var(--space-3);
   z-index: 100;
   padding: var(--space-2) var(--space-4);
-  background: var(--amber);
-  color: var(--on-amber);
+  background: var(--paper);
+  color: var(--ink);
   font-weight: 600;
   text-decoration: none;
   border-radius: var(--radius-control);
@@ -251,6 +256,64 @@ textarea {
 
 .skip-link:focus-visible {
   transform: none;
+}
+
+/* Status line: a crimson dot and plain text */
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--muted);
+  font-size: var(--step--1);
+  font-weight: 500;
+}
+
+.status::before {
+  content: "";
+  flex-shrink: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--crimson);
+}
+
+/* Shared definition list: label column and value column, hairline rows */
+.facts {
+  align-self: start;
+  border-top: 1px solid var(--line);
+}
+
+.facts > div {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  gap: var(--space-4);
+  padding-block: var(--space-3);
+  border-bottom: 1px solid var(--line);
+}
+
+.facts dt {
+  color: var(--muted);
+  font-size: var(--step--1);
+  line-height: 1.8;
+}
+
+.facts dd {
+  margin: 0;
+}
+
+.feature-list {
+  display: grid;
+  gap: var(--space-3);
+  padding-left: 1.1em;
+}
+
+.feature-list li {
+  padding-left: var(--space-1);
+  max-width: var(--measure);
+}
+
+.feature-list li::marker {
+  color: var(--crimson);
 }
 
 /* 6. Buttons */
@@ -270,12 +333,12 @@ textarea {
 }
 
 .button--primary {
-  background: var(--amber);
-  color: var(--on-amber);
+  background: var(--crimson-deep);
+  color: var(--paper);
 }
 
 .button--primary:hover {
-  background: var(--amber-hi);
+  background: var(--crimson-hover);
 }
 
 .button--secondary {
@@ -284,8 +347,8 @@ textarea {
 }
 
 .button--secondary:hover {
-  border-color: var(--fog);
-  background: var(--rail);
+  border-color: var(--paper);
+  background: var(--surface-2);
 }
 
 /* 7. Site header & navigation
@@ -295,7 +358,7 @@ textarea {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: var(--night);
+  background: var(--ink);
   border-bottom: 1px solid var(--line);
 }
 
@@ -315,7 +378,7 @@ textarea {
   gap: var(--space-3);
   font-family: var(--font-display);
   font-size: 1.125rem;
-  font-weight: 650;
+  font-weight: 700;
   letter-spacing: -0.01em;
   text-decoration: none;
 }
@@ -325,15 +388,15 @@ textarea {
 }
 
 .brand-mark rect {
-  fill: var(--deck);
+  fill: var(--crimson-deep);
 }
 
 .brand-mark path {
   fill: none;
-  stroke: var(--amber);
-  stroke-width: 5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  stroke: var(--paper);
+  stroke-width: 6;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
 }
 
 .nav-list {
@@ -351,7 +414,7 @@ textarea {
   min-height: 2.75rem;
   padding: 0 var(--space-3);
   border-radius: var(--radius-control);
-  color: var(--fog);
+  color: var(--muted);
   font-size: 0.9375rem;
   font-weight: 500;
   text-decoration: none;
@@ -360,18 +423,18 @@ textarea {
 
 .nav-list a:hover {
   color: var(--paper);
-  background: var(--rail);
+  background: var(--surface-2);
 }
 
 .nav-cta a {
   margin-left: var(--space-2);
-  border: 1px solid var(--amber);
-  color: var(--amber);
+  border: 1px solid var(--crimson);
+  color: var(--paper);
 }
 
 .nav-cta a:hover {
-  background: var(--amber);
-  color: var(--on-amber);
+  background: var(--crimson-deep);
+  color: var(--paper);
 }
 
 .nav-toggle {
@@ -388,8 +451,8 @@ textarea {
 }
 
 .nav-toggle:hover {
-  border-color: var(--fog);
-  background: var(--rail);
+  border-color: var(--paper);
+  background: var(--surface-2);
 }
 
 /* Three-line icon that turns into a cross when the menu is open */
@@ -399,7 +462,6 @@ textarea {
   display: block;
   width: 1.125rem;
   height: 2px;
-  border-radius: 1px;
   background: currentColor;
   transition: transform var(--duration-base) var(--ease-out), background-color var(--duration-quick) ease;
 }
@@ -446,7 +508,7 @@ textarea {
     top: 100%;
     left: 0;
     right: 0;
-    background: var(--deck);
+    background: var(--surface);
     border-bottom: 1px solid var(--line);
     padding: var(--space-3) var(--gutter) var(--space-5);
   }
@@ -471,60 +533,77 @@ textarea {
   }
 }
 
-/* 8. Hero */
+/* 8. Hero — the giant word sits behind; name, screenshots and facts sit in front */
 .hero {
-  padding-block: clamp(2.5rem, 1.5rem + 5vw, 6rem) clamp(3.5rem, 2rem + 4vw, 6rem);
-  border-bottom: 1px solid var(--line); /* same hairline that separates every later section */
-  overflow-x: clip;
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  padding-bottom: clamp(3.5rem, 2rem + 4vw, 6rem);
+  border-bottom: 1px solid var(--line);
+  background: radial-gradient(ellipse 70% 55% at 50% 0%, rgb(229 37 53 / 0.16), transparent 70%);
+}
+
+.hero-word {
+  position: absolute;
+  z-index: -1;
+  top: var(--space-4);
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center; /* centres the over-wide word so both edges crop evenly */
+  padding-bottom: 0.12em; /* room for the full glyph height, so the fade below never cuts letters off */
+  color: var(--crimson);
+  font-size: var(--step-word);
+  line-height: 1;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  -webkit-mask-image: linear-gradient(to bottom, #000 22%, transparent 76%);
+  mask-image: linear-gradient(to bottom, #000 22%, transparent 76%); /* fully faded by the baseline */
 }
 
 .hero-grid {
   display: grid;
   gap: var(--space-8);
-  align-items: center;
+  /* Small screens: content starts just below the word. Wide screens: the name overlaps it (see 64rem). */
+  padding-top: calc(var(--step-word) * 0.92);
 }
 
 .hero-copy > * + * {
   margin-top: var(--space-4);
 }
 
-/* Status line: availability in the hero, project state in case studies */
-.status {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
+.hero-copy .status {
   padding: var(--space-1) var(--space-3);
-  border: 1px solid var(--line-strong);
+  border: 1px solid var(--line-control);
   border-radius: var(--radius-pill);
+  background: var(--ink);
   color: var(--paper);
-  font-size: var(--step--1);
-  font-weight: 500;
 }
 
-.status::before {
-  content: "";
-  flex-shrink: 0;
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 50%;
-  background: var(--amber);
+.hero-name {
+  font-size: var(--step-name);
 }
 
-.hero-copy h1 {
+.hero-copy .hero-name {
   margin-top: var(--space-5);
 }
 
+.hero-name span {
+  display: block;
+}
+
 .hero-role {
+  color: var(--crimson-text);
   font-family: var(--font-display);
-  font-size: var(--step-2);
-  font-weight: 500;
-  line-height: var(--leading-heading);
-  letter-spacing: -0.01em;
+  font-size: clamp(1.2rem, 1rem + 0.7vw, 1.55rem);
+  font-weight: 600;
+  line-height: 1.25;
 }
 
 .hero-lede {
-  max-width: 34rem;
-  color: var(--fog);
+  max-width: 32rem;
+  color: var(--muted);
   font-size: var(--step-1);
   line-height: 1.5;
 }
@@ -536,47 +615,62 @@ textarea {
   margin-top: var(--space-6);
 }
 
-.hero-copy .hero-meta {
-  max-width: 30rem;
-  margin-top: var(--space-6);
-  padding-top: var(--space-4);
-  border-top: 1px solid var(--line);
-  color: var(--fog);
-  font-size: var(--step--1);
+/* Very narrow phones: body-size intro and a tighter gap keep both actions in the first screen */
+@media (max-width: 24rem) {
+  .hero-lede {
+    font-size: var(--step-0);
+  }
+
+  .hero-copy .hero-name {
+    margin-top: var(--space-3);
+  }
+
+  .hero-copy .hero-actions {
+    margin-top: var(--space-5);
+  }
 }
 
-/* Visual: two real screenshots, overlapped, above the order path */
+/* Three real screenshots, layered: owner overview behind, menu in front, order status on top */
 .hero-visual {
   width: 100%;
-  max-width: 34rem;
+  max-width: 36rem;
 }
 
 .hero-shots {
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
 }
 
 .shot {
-  grid-row: 1;
-  width: 100%;
+  grid-area: 1 / 1;
   border: 1px solid var(--line);
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-frame);
+  border-radius: var(--radius-shot);
   background: var(--paper);
+  box-shadow: var(--shadow-shot);
+}
+
+.shot--back {
+  width: 100%;
+  align-self: start;
+  filter: brightness(0.36) saturate(0.5);
 }
 
 .shot--menu {
-  grid-column: 1 / span 7;
+  z-index: 1;
+  width: 52%;
+  justify-self: start;
+  margin: 18% 0 0 4%;
 }
 
 .shot--status {
-  grid-column: 6 / -1;
+  z-index: 2;
+  width: 54%;
+  justify-self: end;
   align-self: end;
-  margin-bottom: 14%;
-  border-color: var(--line-strong);
+  margin-bottom: 7%;
+  border-color: var(--crimson);
 }
 
-/* The order path: the five real Velora statuses on one amber line */
+/* The order path: Velora's five real statuses on one crimson line */
 .order-path {
   --dot: 0.75rem;
   position: relative;
@@ -598,11 +692,11 @@ textarea {
 }
 
 .order-path::before {
-  background: var(--line-strong);
+  background: var(--line);
 }
 
 .order-path::after {
-  background: var(--amber);
+  background: var(--crimson);
   transform-origin: left center;
   animation: order-path-draw 1.4s var(--ease-out) 0.4s both;
 }
@@ -614,8 +708,8 @@ textarea {
   flex-direction: column;
   align-items: center;
   gap: var(--space-2);
-  color: var(--fog);
-  font-size: 0.8125rem;
+  color: var(--muted);
+  font-size: clamp(0.6875rem, 0.5rem + 0.9vw, 0.8125rem); /* 11px at 320 so "Confirmed" fits its fifth */
   text-align: center;
 }
 
@@ -623,9 +717,9 @@ textarea {
   content: "";
   width: var(--dot);
   height: var(--dot);
-  border: 2px solid var(--amber);
+  border: 2px solid var(--crimson);
   border-radius: 50%;
-  background: var(--night);
+  background: var(--ink);
 }
 
 .order-path li:last-child {
@@ -633,7 +727,7 @@ textarea {
 }
 
 .order-path li:last-child::before {
-  background: var(--amber);
+  background: var(--crimson);
 }
 
 @keyframes order-path-draw {
@@ -643,30 +737,88 @@ textarea {
 }
 
 .hero-visual figcaption {
-  margin-top: var(--space-5);
-  color: var(--fog);
+  margin-top: var(--space-4);
+  color: var(--muted);
   font-size: var(--step--1);
 }
 
-@media (min-width: 60rem) {
+.hero-facts {
+  display: grid;
+  align-content: start;
+  border-top: 1px solid var(--crimson);
+}
+
+.hero-facts > div {
+  padding-block: var(--space-3);
+  border-bottom: 1px solid var(--line);
+}
+
+.hero-facts dt {
+  color: var(--muted);
+  font-size: var(--step--1);
+}
+
+.hero-facts dd {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+@media (min-width: 40rem) and (max-width: 63.999rem) {
+  .hero-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-6);
+  }
+}
+
+@media (min-width: 64rem) {
   .hero-grid {
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-    gap: var(--space-8);
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr) minmax(10rem, 0.38fr);
+    gap: var(--space-7);
+    align-items: start;
+    padding-top: calc(var(--step-word) * 0.4);
   }
 
-  .hero-visual {
-    justify-self: end;
+  .hero-facts {
+    margin-top: calc(var(--step-word) * 0.24);
   }
 }
 
-/* 9. Section heads (shared by later sections) */
-.section-head {
+/* 9. Section titles — red index, condensed uppercase title, a hairline running to the edge */
+.section-title {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+}
+
+.section-title::after {
+  content: "";
+  flex: 1 1 0;
+  min-width: 0;
+  height: 1px;
+  align-self: center;
+  background: var(--line);
+}
+
+.section-index {
+  flex-shrink: 0;
+  color: var(--crimson-text);
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.section-title h2 {
+  min-width: 0;
+  font-size: var(--step-3);
+}
+
+.section-lead {
   max-width: 44rem;
-}
-
-.section-head p {
-  margin-top: var(--space-4);
-  color: var(--fog);
+  margin-top: var(--space-5);
+  color: var(--muted);
   font-size: var(--step-1);
   line-height: 1.5;
 }
@@ -678,66 +830,34 @@ textarea {
 
 .case-head {
   display: grid;
-  gap: var(--space-6);
+  gap: var(--space-5) var(--space-6);
+}
+
+.case-index {
+  font-size: clamp(4.5rem, 3rem + 6vw, 9rem);
+  color: var(--crimson);
+}
+
+@supports (-webkit-text-stroke: 1px var(--crimson)) {
+  .case-index {
+    color: transparent;
+    -webkit-text-stroke: 2px var(--crimson);
+  }
 }
 
 .case-intro > * + * {
   margin-top: var(--space-4);
 }
 
-/* In a case study the status reads as a plain state line, not a badge */
-.case .status {
-  padding: 0;
-  border: 0;
-  color: var(--fog);
-}
-
 .case-title {
-  font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.25rem);
+  font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.4rem);
+  font-weight: 700;
   letter-spacing: -0.02em;
 }
 
 .case-lede {
   font-size: var(--step-1);
   line-height: 1.5;
-}
-
-.facts {
-  align-self: start;
-  border-top: 1px solid var(--line);
-}
-
-.facts > div {
-  display: grid;
-  grid-template-columns: 5.5rem minmax(0, 1fr);
-  gap: var(--space-4);
-  padding-block: var(--space-3);
-  border-bottom: 1px solid var(--line);
-}
-
-.facts dt {
-  color: var(--fog);
-  font-size: var(--step--1);
-  line-height: 1.8;
-}
-
-.facts dd {
-  margin: 0;
-}
-
-.feature-list {
-  display: grid;
-  gap: var(--space-3);
-  padding-left: 1.1em;
-}
-
-.feature-list li::marker {
-  color: var(--amber);
-}
-
-.feature-list li {
-  padding-left: var(--space-1);
-  max-width: var(--measure);
 }
 
 .case-actions {
@@ -748,44 +868,60 @@ textarea {
 }
 
 .case-note {
-  color: var(--fog);
+  color: var(--muted);
   font-size: var(--step--1);
 }
 
-/* Screenshots share one frame treatment */
 .case img {
   width: 100%;
   border: 1px solid var(--line);
-  border-radius: var(--radius-card);
+  border-radius: var(--radius-shot);
   background: var(--paper);
 }
 
 .case figcaption {
   margin-top: var(--space-3);
-  color: var(--fog);
+  color: var(--muted);
   font-size: var(--step--1);
 }
 
-@media (min-width: 60rem) {
+@media (min-width: 64rem) {
   .case-head {
-    grid-template-columns: minmax(0, 1.6fr) minmax(16rem, 1fr);
-    gap: var(--space-8);
+    grid-template-columns: auto minmax(0, 1.6fr) minmax(16rem, 1fr);
+    gap: var(--space-7);
     align-items: end;
   }
 }
 
-/* 11. Velora 2 — editorial: large real screenshots, one row per role */
+/* 11. Velora 2 — magazine spread: big screenshot against an offset crimson frame, alternating rows */
+.case--velora {
+  margin-top: var(--space-8);
+}
+
 .case-lead {
+  position: relative;
+  isolation: isolate;
   margin-top: var(--space-7);
+  margin-right: 0.75rem;
+}
+
+.case-lead::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0 0 auto 0;
+  aspect-ratio: 1288 / 654;
+  border: 1px solid var(--crimson);
+  border-radius: var(--radius-shot);
+  transform: translate(0.75rem, 0.75rem);
 }
 
 .case-lead img {
-  border-radius: var(--radius-feature);
-  box-shadow: var(--shadow-frame);
+  box-shadow: var(--shadow-shot);
 }
 
 .roles {
-  margin-top: var(--space-7);
+  margin-top: var(--space-8);
 }
 
 .role {
@@ -796,7 +932,8 @@ textarea {
 }
 
 .role h4 {
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-5);
+  font-size: clamp(2rem, 1.5rem + 2vw, 3.25rem);
 }
 
 .role-media--pair {
@@ -823,12 +960,12 @@ textarea {
 
 .next {
   padding-left: var(--space-5);
-  border-left: 2px solid var(--amber);
+  border-left: 3px solid var(--crimson);
 }
 
 .next p {
   margin-top: var(--space-2);
-  color: var(--fog);
+  color: var(--muted);
 }
 
 @media (min-width: 48rem) {
@@ -838,20 +975,39 @@ textarea {
     align-items: start;
   }
 
+  /* Alternate the image side for a magazine rhythm; reading order stays text first */
+  .role--flip {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  }
+
+  .role--flip .role-text {
+    order: 2;
+  }
+
+  /* Two proportional columns: an "auto" column grows to the note's full line width and crushes "What's next" */
   .case-foot {
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
     align-items: center;
     gap: var(--space-7);
   }
+
+  .case-lead {
+    margin-right: 1.25rem;
+  }
+
+  .case-lead::before {
+    transform: translate(1.25rem, 1.25rem);
+  }
 }
 
-/* 12. Hunter System — a contained panel: no screenshots, a journey diagram and an architecture strip */
+/* 12. Hunter System — a technical sheet: charcoal panel, crimson top rule, numbered steps, architecture */
 .case--hunter {
   margin-top: var(--section-gap);
   padding: clamp(var(--space-5), 1rem + 3vw, var(--space-8));
-  background: var(--deck);
+  background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: var(--radius-feature);
+  border-top: 3px solid var(--crimson);
+  border-radius: var(--radius-control);
 }
 
 .hunter-body {
@@ -867,7 +1023,7 @@ textarea {
 /* The student's path is a true sequence, so it is numbered */
 .journey {
   display: grid;
-  gap: var(--space-5) var(--space-5);
+  gap: var(--space-5);
   padding: 0;
   list-style: none;
   counter-reset: step;
@@ -878,35 +1034,31 @@ textarea {
   display: grid;
   align-content: start;
   gap: var(--space-1);
-  padding-left: 2.75rem;
+  padding: var(--space-4) 0 0 3rem;
+  border-top: 1px solid var(--line);
   counter-increment: step;
 }
 
 .journey li::before {
-  content: counter(step);
+  content: counter(step, decimal-leading-zero);
   position: absolute;
-  top: 0;
+  top: var(--space-4);
   left: 0;
-  display: grid;
-  place-items: center;
-  width: 2rem;
-  height: 2rem;
-  border: 1px solid var(--amber);
-  border-radius: 50%;
-  color: var(--amber);
+  color: var(--crimson-text);
   font-family: var(--font-display);
-  font-weight: 650;
-  font-size: 0.9375rem;
-  line-height: 1;
+  font-stretch: 75%;
+  font-weight: 800;
+  font-size: 1.5rem;
+  line-height: 1.2;
 }
 
 .journey strong {
   font-weight: 600;
-  line-height: 2rem;
+  line-height: 1.8rem;
 }
 
 .journey span {
-  color: var(--fog);
+  color: var(--muted);
   font-size: 0.9375rem;
 }
 
@@ -930,12 +1082,12 @@ textarea {
   position: relative;
   display: grid;
   padding: var(--space-3) var(--space-4);
-  border: 1px solid var(--line-strong);
+  border: 1px solid var(--line-control);
   border-radius: var(--radius-control);
-  background: var(--night);
+  background: var(--ink);
 }
 
-/* Connector between layers: vertical by default */
+/* Connector between layers */
 .arch-flow li + li::before {
   content: "";
   position: absolute;
@@ -943,11 +1095,11 @@ textarea {
   bottom: 100%;
   width: 2px;
   height: var(--space-5);
-  background: var(--amber);
+  background: var(--crimson);
 }
 
 .arch-flow span {
-  color: var(--fog);
+  color: var(--muted);
   font-size: var(--step--1);
 }
 
@@ -968,7 +1120,42 @@ textarea {
   }
 }
 
-/* 13. Skills — category columns; "developing" is stated in words, not only colour */
+/* 13. About — one large statement, two short paragraphs */
+.about-body {
+  display: grid;
+  gap: var(--space-6);
+  margin-top: var(--space-7);
+}
+
+.about-statement {
+  max-width: 24ch;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 1.2rem + 2.2vw, 3rem);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+.about-text {
+  align-self: end;
+}
+
+.about-text > * + * {
+  margin-top: var(--space-4);
+}
+
+.about-text p {
+  color: var(--muted);
+}
+
+@media (min-width: 60rem) {
+  .about-body {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: var(--space-8);
+  }
+}
+
+/* 14. Skills — outlined labels; "Developing" is a separate, named list with dashed borders */
 .skills-grid {
   display: grid;
   gap: var(--space-7) var(--space-6);
@@ -977,37 +1164,49 @@ textarea {
 
 .skill-group {
   padding-top: var(--space-4);
-  border-top: 1px solid var(--line-strong);
+  border-top: 1px solid var(--crimson);
 }
 
 .skill-group h3 {
   font-size: var(--step-1);
 }
 
-.skill-list {
-  display: grid;
-  gap: var(--space-4);
-  margin-top: var(--space-5);
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
   padding: 0;
   list-style: none;
 }
 
-.skill-list li {
-  display: grid;
+.chips li {
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--line-control);
+  border-radius: var(--radius-control);
+  font-size: 0.9375rem;
+  font-weight: 500;
 }
 
-.skill-name {
-  font-weight: 600;
-}
-
-.skill-note {
-  color: var(--fog);
+.chips-label {
+  margin-top: var(--space-4);
+  color: var(--muted);
   font-size: var(--step--1);
 }
 
-.skill--developing .skill-name {
-  color: var(--fog);
-  font-weight: 500;
+.chips--developing {
+  margin-top: var(--space-2);
+}
+
+.chips--developing li {
+  border-style: dashed;
+  color: var(--muted);
+}
+
+.skill-note {
+  margin-top: var(--space-4);
+  color: var(--muted);
+  font-size: var(--step--1);
 }
 
 @media (min-width: 40rem) {
@@ -1022,37 +1221,7 @@ textarea {
   }
 }
 
-/* 14. About — heading beside the text on wide screens */
-.about {
-  display: grid;
-  gap: var(--space-5);
-}
-
-.about-text > * + * {
-  margin-top: var(--space-4);
-}
-
-.about-text p {
-  color: var(--fog);
-}
-
-.about-text .about-lead {
-  color: var(--paper);
-  font-family: var(--font-display);
-  font-size: var(--step-2);
-  font-weight: 500;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
-}
-
-@media (min-width: 60rem) {
-  .about {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-    gap: var(--space-8);
-  }
-}
-
-/* 15. Education — one entry beside its two semester results */
+/* 15. Education — the institution beside two large SGPA figures */
 .edu {
   display: grid;
   gap: var(--space-7);
@@ -1061,7 +1230,7 @@ textarea {
 
 .edu-degree {
   margin-top: var(--space-2);
-  color: var(--fog);
+  color: var(--muted);
   font-size: var(--step-1);
 }
 
@@ -1070,15 +1239,8 @@ textarea {
   margin-top: var(--space-5);
 }
 
-.results {
-  padding: var(--space-5) var(--space-6) var(--space-6);
-  background: var(--deck);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-card);
-}
-
 .results .results-title {
-  color: var(--fog);
+  color: var(--muted);
   font-family: var(--font-body);
   font-size: var(--step--1);
   font-weight: 500;
@@ -1088,7 +1250,7 @@ textarea {
 .results-list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--space-5);
+  gap: var(--space-6);
   margin-top: var(--space-4);
   padding: 0;
   list-style: none;
@@ -1096,72 +1258,74 @@ textarea {
 
 .results-list li {
   display: grid;
-  gap: var(--space-1);
+  gap: var(--space-2);
+  padding-top: var(--space-4);
+  border-top: 2px solid var(--crimson);
 }
 
 .result-value {
-  font-family: var(--font-display);
-  font-size: var(--step-3);
-  font-weight: 650;
-  line-height: 1;
-  letter-spacing: -0.02em;
+  font-size: clamp(3.5rem, 2.5rem + 4vw, 6rem);
 }
 
 .result-label {
-  color: var(--fog);
+  color: var(--muted);
   font-size: var(--step--1);
 }
 
 @media (min-width: 60rem) {
   .edu {
-    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
     align-items: start;
     gap: var(--space-8);
   }
 }
 
-/* 16. Services — a plain two-column list, not cards */
+/* 16. Services — ruled rows: title beside description */
 .services {
-  display: grid;
-  gap: var(--space-6) var(--space-7);
   margin-top: var(--space-7);
   padding: 0;
   list-style: none;
+  border-bottom: 1px solid var(--line);
 }
 
 .service {
-  padding-top: var(--space-4);
-  border-top: 1px solid var(--line-strong);
+  display: grid;
+  gap: var(--space-2) var(--space-7);
+  padding-block: var(--space-5);
+  border-top: 1px solid var(--line);
 }
 
 .service h3 {
-  font-size: var(--step-1);
+  font-size: var(--step-2);
+  font-weight: 600;
 }
 
 .service p {
-  margin-top: var(--space-2);
-  color: var(--fog);
+  color: var(--muted);
 }
 
 @media (min-width: 48rem) {
-  .services {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .service {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+    align-items: baseline;
   }
 }
 
-/* 17. Contact — the closing panel */
+/* 17. Contact — a large closing line, two actions, ruled contact rows */
 .contact {
   display: grid;
   gap: var(--space-7);
-  padding: clamp(var(--space-5), 1rem + 3vw, var(--space-8));
-  background: var(--deck);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-feature);
+  margin-top: var(--space-7);
+}
+
+.contact-display {
+  max-width: none;
+  font-size: clamp(3rem, 1.6rem + 6vw, 7.5rem);
 }
 
 .contact-lead {
-  margin-top: var(--space-4);
-  color: var(--fog);
+  margin-top: var(--space-5);
+  color: var(--muted);
   font-size: var(--step-1);
   line-height: 1.5;
 }
@@ -1181,15 +1345,15 @@ textarea {
 
 .contact-note {
   margin-top: var(--space-4);
-  color: var(--fog);
+  color: var(--muted);
   font-size: var(--step--1);
 }
 
 .contact-links {
-  align-self: center;
+  align-self: end;
   padding: 0;
   list-style: none;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--crimson);
 }
 
 .contact-links li {
@@ -1200,25 +1364,28 @@ textarea {
 }
 
 .contact-label {
-  color: var(--fog);
+  color: var(--muted);
   font-size: var(--step--1);
 }
 
 .contact-links a {
   justify-self: start;
-  font-weight: 500;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
   overflow-wrap: anywhere;
-  text-decoration-color: var(--line-strong);
-  transition: text-decoration-color var(--duration-quick) ease;
+  text-decoration-color: var(--line-control);
+  transition: color var(--duration-quick) ease, text-decoration-color var(--duration-quick) ease;
 }
 
 .contact-links a:hover {
-  text-decoration-color: var(--amber);
+  color: var(--crimson-text);
+  text-decoration-color: var(--crimson);
 }
 
 @media (min-width: 60rem) {
   .contact {
-    grid-template-columns: minmax(0, 1.5fr) minmax(16rem, 1fr);
+    grid-template-columns: minmax(0, 1.6fr) minmax(16rem, 1fr);
     gap: var(--space-8);
   }
 }
@@ -1234,13 +1401,13 @@ textarea {
   justify-content: space-between;
   gap: var(--space-3);
   padding-block: var(--space-6);
-  color: var(--fog);
+  color: var(--muted);
   font-size: var(--step--1);
 }
 
 .footer-inner a {
   padding-block: var(--space-1); /* 24px+ target (WCAG 2.5.8) */
-  text-decoration-color: var(--line-strong);
+  text-decoration-color: var(--line-control);
 }
 
 .footer-inner a:hover {

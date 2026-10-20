@@ -17,7 +17,7 @@ Plain HTML, CSS and a little JavaScript: no framework, build step, package manag
 ├── .nojekyll                   Tells GitHub Pages to serve files as-is
 ├── .gitignore                  Keeps prompt.md and the generated promo video out of the repository
 └── public/assets/
-    ├── fonts/                  Bricolage Grotesque + IBM Plex Sans (WOFF2) and their OFL licences
+    ├── fonts/                  Bricolage Grotesque (with its 75–100% width axis) + IBM Plex Sans (WOFF2), OFL licences
     ├── icons/                  favicon-32.png, apple-touch-icon.png (180 × 180)
     ├── og/og-image.png         Link-preview image, 1200 × 630
     └── projects/velora/        Five real Velora 2 screenshots (WebP, cropped)
@@ -83,7 +83,8 @@ Edit the files, preview locally, then commit and push to `main`; GitHub Pages re
 ## Maintaining the site
 
 - **Text** lives in `index.html`, one `<section>` per nav item (`#work`, `#skills`, `#about`, `#education`, `#services`, `#contact`).
-- **Colours, type sizes and spacing** are tokens at the top of `styles.css`. Text colours on the navy surfaces are WCAG AAA. Control borders use `--line-control` (3:1 minimum).
+- **Colours, type sizes and spacing** are tokens at the top of `styles.css`: near-black `--ink`, white `--paper`, and crimson in three roles. `--crimson` is for graphics and large type only; small red text uses `--crimson-text`, and the primary button uses `--crimson-deep` so white text on it passes WCAG AA. Control borders use `--line-control` (3:1 minimum).
+- **The giant "PORTFOLIO" word** in the hero is decorative (`aria-hidden`). Its size is `--step-word`; it is meant to be slightly wider than the screen so both ends crop.
 - **Adding a screenshot:** convert it to WebP, crop out personal data, give the `<img>` its real `width`, `height`, descriptive `alt` text and `loading="lazy"`.
 - **When Velora 2 ships:** update its status line and the "What's next" block, and only then mention Stripe or a live address.
 - **New semester results:** add another item to the Education results list and keep the label as SGPA.

@@ -8,7 +8,7 @@
   <meta name="author" content="Nikhil Modi">
   <meta name="robots" content="index, follow">
   <meta name="color-scheme" content="dark">
-  <meta name="theme-color" content="#0E1521">
+  <meta name="theme-color" content="#080809">
 
   <!-- Canonical address: GitHub Pages user site, repository Nikhil9638.github.io.
        The absolute URLs below (canonical, og:url, og:image, twitter:image) are the only ones in the site;
@@ -36,7 +36,7 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="public/assets/icons/favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="public/assets/icons/apple-touch-icon.png">
-  <link rel="preload" href="public/assets/fonts/bricolage-grotesque-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="public/assets/fonts/bricolage-grotesque-latin-wdth-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="public/assets/fonts/ibm-plex-sans-latin-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
@@ -48,8 +48,8 @@
     <div class="container header-inner">
       <a class="brand" href="#top">
         <svg class="brand-mark" viewBox="0 0 64 64" width="32" height="32" aria-hidden="true" focusable="false">
-          <rect width="64" height="64" rx="14"/>
-          <path d="M12 46V18l16 28V18M36 46V18l8 17 8-17v28"/>
+          <rect width="64" height="64" rx="10"/>
+          <path d="M14 46V18l14 28V18M36 46V18l7 16 7-16v28"/>
         </svg>
         <span>Nikhil Modi</span>
       </a>
@@ -61,9 +61,9 @@
 
       <nav id="site-nav" class="site-nav" aria-label="Main">
         <ul class="nav-list">
-          <li><a href="#work">Work</a></li>
-          <li><a href="#skills">Skills</a></li>
           <li><a href="#about">About</a></li>
+          <li><a href="#work">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
           <li><a href="#education">Education</a></li>
           <li><a href="#services">Services</a></li>
           <li class="nav-cta"><a href="#contact">Contact</a></li>
@@ -74,23 +74,28 @@
 
   <main id="main">
     <section id="top" class="hero" aria-labelledby="hero-title">
+      <!-- Decorative: the giant word is hidden from assistive technology -->
+      <div class="hero-word" aria-hidden="true">Portfolio</div>
+
       <div class="container hero-grid">
         <div class="hero-copy">
           <p class="status">Open to internship opportunities</p>
-          <h1 id="hero-title">Nikhil Modi</h1>
+          <h1 id="hero-title" class="hero-name"><span>Nikhil</span> <span>Modi</span></h1>
           <p class="hero-role">Python Developer &amp; Full&#8209;Stack Application Builder</p>
-          <p class="hero-lede">B.Sc. IT student focused on Python automation, Django REST APIs, backend development, and full&#8209;stack applications.</p>
+          <p class="hero-lede">B.Sc. IT student focused on Python automation, Django REST APIs, backend development and full&#8209;stack applications.</p>
 
           <div class="hero-actions">
             <a class="button button--primary" href="#work">View projects</a>
             <a class="button button--secondary" href="#contact">Contact me</a>
           </div>
-
-          <p class="hero-meta">Semester 3, B.Sc. Information Technology at L. J. Institute of Computer Applications. Expected to graduate in 2028.</p>
         </div>
 
         <figure class="hero-visual">
           <div class="hero-shots">
+            <img class="shot shot--back"
+                 src="public/assets/projects/velora/velora-owner-overview.webp"
+                 width="1288" height="654"
+                 alt="Velora owner dashboard overview with live order counts by status.">
             <img class="shot shot--menu"
                  src="public/assets/projects/velora/velora-customer-menu.webp"
                  width="536" height="797"
@@ -110,21 +115,58 @@
             <li>Served</li>
           </ol>
 
-          <figcaption>Velora 2, my QR ordering platform for cafés. Real screenshots of the customer menu and order tracking, from a local test run.</figcaption>
+          <figcaption>Velora 2, my QR ordering platform for cafés. Real screenshots from a local test run.</figcaption>
         </figure>
+
+        <dl class="hero-facts">
+          <div>
+            <dt>Studying</dt>
+            <dd>B.Sc. IT student, Semester 3</dd>
+          </div>
+          <div>
+            <dt>College</dt>
+            <dd>L. J. Institute of Computer Applications</dd>
+          </div>
+          <div>
+            <dt>Graduating</dt>
+            <dd>2028 (expected)</dd>
+          </div>
+          <div>
+            <dt>Works with</dt>
+            <dd>Python, Django REST Framework, PostgreSQL</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section id="about" class="section" aria-labelledby="about-title">
+      <div class="container about">
+        <header class="section-title">
+          <span class="section-index" aria-hidden="true">01</span>
+          <h2 id="about-title">About</h2>
+        </header>
+        <div class="about-body">
+          <p class="about-statement">I’m Nikhil Modi, a B.Sc. IT student focused on Python development, backend APIs, automation and full&#8209;stack applications.</p>
+          <div class="about-text">
+            <p>I learn by building complete projects rather than isolated exercises. Velora 2 took me from database design through a Django REST API to a React interface used by customers, staff and owners. Hunter System pairs a React interface with a PHP API that decides scores, ranks and rewards on the server.</p>
+            <p>I’m looking for an internship where I can contribute to real backend or full-stack work and learn from an experienced team.</p>
+          </div>
+        </div>
       </div>
     </section>
 
     <section id="work" class="section" aria-labelledby="work-title">
       <div class="container">
-        <header class="section-head">
-          <h2 id="work-title">Selected work</h2>
-          <p>A commercial ordering platform for cafés that I built end to end, and a gamified platform that teaches students Python.</p>
+        <header class="section-title">
+          <span class="section-index" aria-hidden="true">02</span>
+          <h2 id="work-title">Selected projects</h2>
         </header>
+        <p class="section-lead">A commercial ordering platform for cafés that I built end to end, and a gamified platform that teaches students Python.</p>
 
         <!-- Velora 2: lead, commercial. Source is private; no repository link. -->
         <article class="case case--velora" aria-labelledby="velora-title">
           <div class="case-head">
+            <span class="case-index" aria-hidden="true">01</span>
             <div class="case-intro">
               <p class="status">Core functionality built — preparing for production deployment</p>
               <h3 id="velora-title" class="case-title">Velora 2&nbsp;— QR-based café ordering platform</h3>
@@ -174,7 +216,7 @@
               </div>
             </section>
 
-            <section class="role" aria-labelledby="velora-staff">
+            <section class="role role--flip" aria-labelledby="velora-staff">
               <div class="role-text">
                 <h4 id="velora-staff">For staff</h4>
                 <ul class="feature-list">
@@ -196,7 +238,7 @@
                 <h4 id="velora-owners">For owners</h4>
                 <ul class="feature-list">
                   <li>A separate owner login with full control of the café.</li>
-                  <li>Manage menu items and categories, orders and payments, staff accounts, and tables with their QR codes.</li>
+                  <li>Manage menu items and categories, orders and payments, the staff team, and tables with their QR codes.</li>
                   <li>Menu changes reach the live customer menu as soon as they are saved.</li>
                 </ul>
               </div>
@@ -223,6 +265,7 @@
         <!-- Hunter System: public repository, no live demo. Text-and-diagram until clean screenshots exist. -->
         <article class="case case--hunter" aria-labelledby="hunter-title">
           <div class="case-head">
+            <span class="case-index" aria-hidden="true">02</span>
             <div class="case-intro">
               <p class="status">Completed — runs locally; production deployment not confirmed</p>
               <h3 id="hunter-title" class="case-title">Hunter System&nbsp;— gamified Python&#8209;learning platform</h3>
@@ -309,65 +352,71 @@
 
     <section id="skills" class="section" aria-labelledby="skills-title">
       <div class="container">
-        <header class="section-head">
+        <header class="section-title">
+          <span class="section-index" aria-hidden="true">03</span>
           <h2 id="skills-title">Skills</h2>
-          <p>Grouped by where they sit in an application. Each group starts with what I use most. Skills marked “developing” are ones I have used in a project and am still building depth in.</p>
         </header>
+        <p class="section-lead">Grouped by where they sit in an application. Skills listed under “Developing” are ones I have used in a project and am still building depth in.</p>
 
         <div class="skills-grid">
           <section class="skill-group" aria-labelledby="skills-backend">
             <h3 id="skills-backend">Backend</h3>
-            <ul class="skill-list">
-              <li><span class="skill-name">Python</span><span class="skill-note">Velora 2 backend</span></li>
-              <li><span class="skill-name">Django</span><span class="skill-note">Velora 2</span></li>
-              <li><span class="skill-name">Django REST Framework</span><span class="skill-note">Velora 2 API</span></li>
-              <li class="skill--developing"><span class="skill-name">PHP</span><span class="skill-note">Developing, used in Hunter System</span></li>
+            <ul class="chips">
+              <li>Python</li>
+              <li>Django</li>
+              <li>Django REST Framework</li>
             </ul>
+            <p class="chips-label" id="dev-backend">Developing</p>
+            <ul class="chips chips--developing" aria-labelledby="dev-backend">
+              <li>PHP</li>
+            </ul>
+            <p class="skill-note">Velora 2 runs on Django REST Framework; Hunter System’s API is PHP.</p>
           </section>
 
           <section class="skill-group" aria-labelledby="skills-databases">
             <h3 id="skills-databases">Databases</h3>
-            <ul class="skill-list">
-              <li><span class="skill-name">PostgreSQL</span><span class="skill-note">Velora 2</span></li>
-              <li><span class="skill-name">MySQL / MariaDB</span><span class="skill-note">Hunter System</span></li>
+            <ul class="chips">
+              <li>PostgreSQL</li>
+              <li>MySQL / MariaDB</li>
             </ul>
+            <p class="skill-note">PostgreSQL in Velora 2; MariaDB in Hunter System.</p>
           </section>
 
           <section class="skill-group" aria-labelledby="skills-frontend">
             <h3 id="skills-frontend">Frontend</h3>
-            <ul class="skill-list">
-              <li><span class="skill-name">HTML</span><span class="skill-note">Velora 2, Hunter System</span></li>
-              <li><span class="skill-name">CSS</span><span class="skill-note">Velora 2, Hunter System</span></li>
-              <li><span class="skill-name">JavaScript</span><span class="skill-note">Velora 2, Hunter System</span></li>
-              <li class="skill--developing"><span class="skill-name">React</span><span class="skill-note">Developing, used in Velora 2 and Hunter System</span></li>
+            <ul class="chips">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
             </ul>
+            <p class="chips-label" id="dev-frontend">Developing</p>
+            <ul class="chips chips--developing" aria-labelledby="dev-frontend">
+              <li>React</li>
+            </ul>
+            <p class="skill-note">Both projects have React interfaces.</p>
           </section>
 
           <section class="skill-group" aria-labelledby="skills-tools">
             <h3 id="skills-tools">Tools and systems</h3>
-            <ul class="skill-list">
-              <li><span class="skill-name">Git</span><span class="skill-note">Version control for my projects</span></li>
-              <li class="skill--developing"><span class="skill-name">Linux</span><span class="skill-note">Developing</span></li>
+            <ul class="chips">
+              <li>Git</li>
             </ul>
+            <p class="chips-label" id="dev-tools">Developing</p>
+            <ul class="chips chips--developing" aria-labelledby="dev-tools">
+              <li>Linux</li>
+            </ul>
+            <p class="skill-note">Git for version control across my projects.</p>
           </section>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="section" aria-labelledby="about-title">
-      <div class="container about">
-        <h2 id="about-title">About</h2>
-        <div class="about-text">
-          <p class="about-lead">I’m Nikhil Modi, a B.Sc. IT student focused on Python development, backend APIs, automation and full&#8209;stack applications.</p>
-          <p>I learn by building complete projects rather than isolated exercises. Velora 2 took me from database design through a Django REST API to a React interface used by customers, staff and owners. Hunter System pairs a React interface with a PHP API that decides scores, ranks and rewards on the server.</p>
-          <p>I’m looking for an internship where I can contribute to real backend or full-stack work and learn from an experienced team.</p>
         </div>
       </div>
     </section>
 
     <section id="education" class="section" aria-labelledby="education-title">
       <div class="container">
-        <h2 id="education-title">Education</h2>
+        <header class="section-title">
+          <span class="section-index" aria-hidden="true">04</span>
+          <h2 id="education-title">Education</h2>
+        </header>
 
         <div class="edu">
           <div class="edu-main">
@@ -404,10 +453,11 @@
 
     <section id="services" class="section" aria-labelledby="services-title">
       <div class="container">
-        <header class="section-head">
+        <header class="section-title">
+          <span class="section-index" aria-hidden="true">05</span>
           <h2 id="services-title">How I can help</h2>
-          <p>Selected work I can take on now. Every project starts with a conversation about scope, so we agree on what is realistic before any work begins.</p>
         </header>
+        <p class="section-lead">Selected work I can take on now. Every project starts with a conversation about scope, so we agree on what is realistic before any work begins.</p>
 
         <ul class="services">
           <li class="service">
@@ -430,11 +480,16 @@
       </div>
     </section>
 
-    <section id="contact" class="section" aria-labelledby="contact-title">
+    <section id="contact" class="section section--contact" aria-labelledby="contact-title">
       <div class="container">
+        <header class="section-title">
+          <span class="section-index" aria-hidden="true">06</span>
+          <h2 id="contact-title">Contact</h2>
+        </header>
+
         <div class="contact">
           <div class="contact-main">
-            <h2 id="contact-title">Contact</h2>
+            <p class="contact-display">Let’s work together</p>
             <p class="contact-lead">I’m open to internship opportunities in Python, backend and full-stack development. If you have a project that needs a Python or Django developer, I’m happy to talk about that too.</p>
             <div class="contact-actions">
               <a class="button button--primary" href="mailto:nikhilmodi9638@gmail.com?subject=Internship%20opportunity">Open to internship opportunities</a>
@@ -447,6 +502,10 @@
             <li>
               <span class="contact-label">Email</span>
               <a href="mailto:nikhilmodi9638@gmail.com">nikhilmodi9638@gmail.com</a>
+            </li>
+            <li>
+              <span class="contact-label">Phone</span>
+              <a href="tel:+918460438930">+91 84604 38930</a>
             </li>
             <li>
               <span class="contact-label">GitHub</span>
