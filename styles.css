@@ -1,7 +1,8 @@
 /* ==========================================================================
    Nikhil Modi — portfolio
    1. Fonts   2. Tokens   3. Reset & base   4. Layout   5. Utilities
-   6. Buttons   7. Header & navigation   8. Hero
+   6. Buttons   7. Header & navigation   8. Hero   9. Section heads
+   10. Case studies (shared)   11. Velora 2   12. Hunter System
    ========================================================================== */
 
 /* 1. Fonts — self-hosted, SIL OFL 1.1 (licences in public/assets/fonts/) */
@@ -463,7 +464,8 @@ textarea {
   margin-top: var(--space-4);
 }
 
-.hero-status {
+/* Status line: availability in the hero, project state in case studies */
+.status {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
@@ -475,8 +477,9 @@ textarea {
   font-weight: 500;
 }
 
-.hero-status::before {
+.status::before {
   content: "";
+  flex-shrink: 0;
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 50%;
@@ -629,6 +632,315 @@ textarea {
 
   .hero-visual {
     justify-self: end;
+  }
+}
+
+/* 9. Section heads (shared by later sections) */
+.section-head {
+  max-width: 44rem;
+}
+
+.section-head p {
+  margin-top: var(--space-4);
+  color: var(--fog);
+  font-size: var(--step-1);
+  line-height: 1.5;
+}
+
+/* 10. Case studies — shared structure */
+.case {
+  margin-top: var(--space-8);
+}
+
+.case-head {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.case-intro > * + * {
+  margin-top: var(--space-4);
+}
+
+/* In a case study the status reads as a plain state line, not a badge */
+.case .status {
+  padding: 0;
+  border: 0;
+  color: var(--fog);
+}
+
+.case-title {
+  font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.25rem);
+  letter-spacing: -0.02em;
+}
+
+.case-lede {
+  font-size: var(--step-1);
+  line-height: 1.5;
+}
+
+.facts {
+  align-self: start;
+  border-top: 1px solid var(--line);
+}
+
+.facts > div {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: var(--space-4);
+  padding-block: var(--space-3);
+  border-bottom: 1px solid var(--line);
+}
+
+.facts dt {
+  color: var(--fog);
+  font-size: var(--step--1);
+  line-height: 1.8;
+}
+
+.facts dd {
+  margin: 0;
+}
+
+.feature-list {
+  display: grid;
+  gap: var(--space-3);
+  padding-left: 1.1em;
+}
+
+.feature-list li::marker {
+  color: var(--amber);
+}
+
+.feature-list li {
+  padding-left: var(--space-1);
+  max-width: var(--measure);
+}
+
+.case-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-5);
+}
+
+.case-note {
+  color: var(--fog);
+  font-size: var(--step--1);
+}
+
+/* Screenshots share one frame treatment */
+.case img {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--paper);
+}
+
+.case figcaption {
+  margin-top: var(--space-3);
+  color: var(--fog);
+  font-size: var(--step--1);
+}
+
+@media (min-width: 60rem) {
+  .case-head {
+    grid-template-columns: minmax(0, 1.6fr) minmax(16rem, 1fr);
+    gap: var(--space-8);
+    align-items: end;
+  }
+}
+
+/* 11. Velora 2 — editorial: large real screenshots, one row per role */
+.case-lead {
+  margin-top: var(--space-7);
+}
+
+.case-lead img {
+  border-radius: var(--radius-feature);
+  box-shadow: var(--shadow-frame);
+}
+
+.roles {
+  margin-top: var(--space-7);
+}
+
+.role {
+  display: grid;
+  gap: var(--space-5);
+  padding-block: var(--space-7);
+  border-top: 1px solid var(--line);
+}
+
+.role h4 {
+  margin-bottom: var(--space-4);
+}
+
+.role-media--pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-4);
+  align-items: start;
+}
+
+.role-media--note {
+  max-width: 26rem;
+}
+
+.role-media--phone {
+  max-width: 15rem;
+}
+
+.case-foot {
+  display: grid;
+  gap: var(--space-6);
+  padding-top: var(--space-7);
+  border-top: 1px solid var(--line);
+}
+
+.next {
+  padding-left: var(--space-5);
+  border-left: 2px solid var(--amber);
+}
+
+.next p {
+  margin-top: var(--space-2);
+  color: var(--fog);
+}
+
+@media (min-width: 48rem) {
+  .role {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: var(--space-7);
+    align-items: start;
+  }
+
+  .case-foot {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--space-7);
+  }
+}
+
+/* 12. Hunter System — a contained panel: no screenshots, a journey diagram and an architecture strip */
+.case--hunter {
+  margin-top: var(--section-gap);
+  padding: clamp(var(--space-5), 1rem + 3vw, var(--space-8));
+  background: var(--deck);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-feature);
+}
+
+.hunter-body {
+  display: grid;
+  gap: var(--space-7);
+  margin-block: var(--space-7);
+}
+
+.hunter-body h4 {
+  margin-bottom: var(--space-5);
+}
+
+/* The student's path is a true sequence, so it is numbered */
+.journey {
+  display: grid;
+  gap: var(--space-5) var(--space-5);
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.journey li {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: var(--space-1);
+  padding-left: 2.75rem;
+  counter-increment: step;
+}
+
+.journey li::before {
+  content: counter(step);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--amber);
+  border-radius: 50%;
+  color: var(--amber);
+  font-family: var(--font-display);
+  font-weight: 650;
+  font-size: 0.9375rem;
+  line-height: 1;
+}
+
+.journey strong {
+  font-weight: 600;
+  line-height: 2rem;
+}
+
+.journey span {
+  color: var(--fog);
+  font-size: 0.9375rem;
+}
+
+.hunter-detail {
+  display: grid;
+  gap: var(--space-7);
+}
+
+.arch {
+  align-self: start;
+}
+
+.arch-flow {
+  display: grid;
+  gap: var(--space-5);
+  padding: 0;
+  list-style: none;
+}
+
+.arch-flow li {
+  position: relative;
+  display: grid;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-control);
+  background: var(--night);
+}
+
+/* Connector between layers: vertical by default */
+.arch-flow li + li::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  width: 2px;
+  height: var(--space-5);
+  background: var(--amber);
+}
+
+.arch-flow span {
+  color: var(--fog);
+  font-size: var(--step--1);
+}
+
+@media (min-width: 48rem) {
+  .journey {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64rem) {
+  .journey {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .hunter-detail {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    gap: var(--space-8);
   }
 }
 

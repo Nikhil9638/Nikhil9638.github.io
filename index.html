@@ -55,7 +55,7 @@
     <section id="top" class="hero" aria-labelledby="hero-title">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="hero-status">Open to internship opportunities</p>
+          <p class="status">Open to internship opportunities</p>
           <h1 id="hero-title">Nikhil Modi</h1>
           <p class="hero-role">Python Developer &amp; Full&#8209;Stack Application Builder</p>
           <p class="hero-lede">B.Sc. IT student focused on Python automation, Django REST APIs, backend development, and full&#8209;stack applications.</p>
@@ -94,10 +94,195 @@
       </div>
     </section>
 
-    <!-- Phase 3: featured projects (Velora 2, then Hunter System) -->
     <section id="work" class="section" aria-labelledby="work-title">
       <div class="container">
-        <h2 id="work-title">Selected work</h2>
+        <header class="section-head">
+          <h2 id="work-title">Selected work</h2>
+          <p>A commercial ordering platform for cafés that I built end to end, and a gamified platform that teaches students Python.</p>
+        </header>
+
+        <!-- Velora 2: lead, commercial. Source is private; no repository link. -->
+        <article class="case case--velora" aria-labelledby="velora-title">
+          <div class="case-head">
+            <div class="case-intro">
+              <p class="status">Core functionality built — preparing for production deployment</p>
+              <h3 id="velora-title" class="case-title">Velora 2&nbsp;— QR-based café ordering platform</h3>
+              <p class="case-lede">Customers scan the QR code on their table, order from the menu, and watch their order move to served. Staff and owners run service from their own dashboards.</p>
+            </div>
+
+            <dl class="facts">
+              <div>
+                <dt>Role</dt>
+                <dd>Sole developer, built end to end</dd>
+              </div>
+              <div>
+                <dt>Stack</dt>
+                <dd>React, Django REST Framework, PostgreSQL</dd>
+              </div>
+              <div>
+                <dt>Source</dt>
+                <dd>Private (commercial product)</dd>
+              </div>
+            </dl>
+          </div>
+
+          <figure class="case-lead">
+            <img src="public/assets/projects/velora/velora-owner-overview.webp"
+                 width="1288" height="654" loading="lazy" decoding="async"
+                 alt="Velora owner dashboard overview. Tabs for Overview, Orders, Payments, Reviews, Menu, Tables & QR and Team; a notice that 5 orders are waiting for confirmation; and counts of active orders by status: 5 pending, 2 confirmed, 2 preparing, 0 ready.">
+            <figcaption>The owner's overview: live order counts by status, with the rest of the café one tab away. Screenshots throughout are from a local test run.</figcaption>
+          </figure>
+
+          <div class="roles">
+            <section class="role" aria-labelledby="velora-customers">
+              <div class="role-text">
+                <h4 id="velora-customers">For customers</h4>
+                <ul class="feature-list">
+                  <li>Each table has its own QR code, so every order arrives tied to the right table.</li>
+                  <li>Browse the menu by category or search it, then build a cart.</li>
+                  <li>Submit the order and follow it live: Placed, Confirmed, Preparing, Ready, Served.</li>
+                </ul>
+              </div>
+              <div class="role-media role-media--pair">
+                <img src="public/assets/projects/velora/velora-customer-menu.webp"
+                     width="536" height="797" loading="lazy" decoding="async"
+                     alt="Customer menu with a search bar, category filters for coffee and tea, and dishes with prices and Add buttons.">
+                <img src="public/assets/projects/velora/velora-order-status.webp"
+                     width="504" height="414" loading="lazy" decoding="async"
+                     alt="Order status card: pending at the Placed step, with Confirmed, Preparing, Ready and Served to follow, and a note that the page updates automatically.">
+              </div>
+            </section>
+
+            <section class="role" aria-labelledby="velora-staff">
+              <div class="role-text">
+                <h4 id="velora-staff">For staff</h4>
+                <ul class="feature-list">
+                  <li>A separate staff login opens a dashboard built for service, not administration.</li>
+                  <li>Incoming orders arrive on the staff dashboard as customers place them.</li>
+                  <li>Staff take payment in person and mark the order as paid.</li>
+                </ul>
+              </div>
+              <figure class="role-media role-media--note">
+                <img src="public/assets/projects/velora/velora-pay-in-person.webp"
+                     width="414" height="92" loading="lazy" decoding="async"
+                     alt="Payment message on the customer's order page: pay 131.78 rupees to a member of staff in person, and staff will mark it as paid once they receive it.">
+                <figcaption>What the customer sees: payment is handled in person by café staff.</figcaption>
+              </figure>
+            </section>
+
+            <section class="role" aria-labelledby="velora-owners">
+              <div class="role-text">
+                <h4 id="velora-owners">For owners</h4>
+                <ul class="feature-list">
+                  <li>A separate owner login with full control of the café.</li>
+                  <li>Manage menu items and categories, orders and payments, staff accounts, and tables with their QR codes.</li>
+                  <li>Menu changes reach the live customer menu as soon as they are saved.</li>
+                </ul>
+              </div>
+              <div class="role-media role-media--phone">
+                <img src="public/assets/projects/velora/velora-owner-menu-mobile.webp"
+                     width="312" height="512" loading="lazy" decoding="async"
+                     alt="Owner menu management on a phone-sized screen: categories listed as active or inactive, each with Edit and Deactivate or Reactivate buttons, and an Add category button.">
+              </div>
+            </section>
+          </div>
+
+          <div class="case-foot">
+            <div class="next">
+              <h4>What's next</h4>
+              <p>Stripe online payments and production deployment are the next milestones. Neither is live yet; today, customers pay staff in person.</p>
+            </div>
+            <div class="case-actions">
+              <a class="button button--primary" href="mailto:nikhilmodi9638@gmail.com?subject=Velora%202%20enquiry">Discuss this project</a>
+              <p class="case-note">For commercial enquiries. The source code is private.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Hunter System: public repository, no live demo. Text-and-diagram until clean screenshots exist. -->
+        <article class="case case--hunter" aria-labelledby="hunter-title">
+          <div class="case-head">
+            <div class="case-intro">
+              <p class="status">Completed — runs locally; production deployment not confirmed</p>
+              <h3 id="hunter-title" class="case-title">Hunter System&nbsp;— gamified Python&#8209;learning platform</h3>
+              <p class="case-lede">Students learn Python through placement, lessons and quizzes, and progress through ranks as they clear topics. The server, not the browser, decides every score, rank and reward.</p>
+            </div>
+
+            <dl class="facts">
+              <div>
+                <dt>Stack</dt>
+                <dd>React, PHP, MariaDB (MySQL&#8209;compatible)</dd>
+              </div>
+              <div>
+                <dt>Source</dt>
+                <dd>Public on GitHub</dd>
+              </div>
+              <div>
+                <dt>Demo</dt>
+                <dd>None; runs locally on XAMPP</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="hunter-body">
+            <section aria-labelledby="hunter-journey">
+              <h4 id="hunter-journey">A student's path</h4>
+              <ol class="journey">
+                <li>
+                  <strong>Sign up</strong>
+                  <span>Create an account and log in.</span>
+                </li>
+                <li>
+                  <strong>Choose a level</strong>
+                  <span>Pick one of four self-described experience levels.</span>
+                </li>
+                <li>
+                  <strong>Placement test</strong>
+                  <span>Ten questions set a starting rank and a recommended topic.</span>
+                </li>
+                <li>
+                  <strong>Lessons and quizzes</strong>
+                  <span>Read a topic's lesson, then pass its five-question quiz with 3 of 5.</span>
+                </li>
+                <li>
+                  <strong>Rank up</strong>
+                  <span>Clear topics to climb from E-Rank to S-Rank and earn Mana.</span>
+                </li>
+                <li>
+                  <strong>Collect badges</strong>
+                  <span>Spend Mana in the badge store and show badges on the profile.</span>
+                </li>
+              </ol>
+            </section>
+
+            <div class="hunter-detail">
+              <section aria-labelledby="hunter-features">
+                <h4 id="hunter-features">Also in the code</h4>
+                <ul class="feature-list">
+                  <li>An 18-topic curriculum in six skill groups, from Python basics to files and objects.</li>
+                  <li>Mana balance and ledger history, with one-time rewards per topic.</li>
+                  <li>Admin tools for course content, student progress and login activity, and an audit log.</li>
+                  <li>Argon2id password hashing and login throttling.</li>
+                  <li>PHP integration tests for authentication, assessment, quizzes, badges and admin.</li>
+                </ul>
+              </section>
+
+              <figure class="arch" aria-labelledby="hunter-arch-caption">
+                <ol class="arch-flow">
+                  <li><strong>React</strong><span>Interface</span></li>
+                  <li><strong>PHP JSON API</strong><span>Scoring, ranks, rewards</span></li>
+                  <li><strong>MariaDB</strong><span>Progress and ledger</span></li>
+                </ol>
+                <figcaption id="hunter-arch-caption">The browser never talks to the database. PHP is the authority for scores, rank changes, rewards and purchases.</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <div class="case-actions">
+            <a class="button button--secondary" href="https://github.com/Nikhil9638/Hunter-system" target="_blank" rel="noopener noreferrer">View source on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
+            <p class="case-note">Source repository only, not a live demo.</p>
+          </div>
+        </article>
       </div>
     </section>
 
