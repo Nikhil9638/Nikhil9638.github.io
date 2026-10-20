@@ -286,38 +286,165 @@
       </div>
     </section>
 
-    <!-- Phase 4: skills, about, education, services, contact -->
     <section id="skills" class="section" aria-labelledby="skills-title">
       <div class="container">
-        <h2 id="skills-title">Skills</h2>
+        <header class="section-head">
+          <h2 id="skills-title">Skills</h2>
+          <p>Grouped by where they sit in an application. Each group starts with what I use most. Skills marked “developing” are ones I have used in a project and am still building depth in.</p>
+        </header>
+
+        <div class="skills-grid">
+          <section class="skill-group" aria-labelledby="skills-backend">
+            <h3 id="skills-backend">Backend</h3>
+            <ul class="skill-list">
+              <li><span class="skill-name">Python</span><span class="skill-note">Velora 2 backend</span></li>
+              <li><span class="skill-name">Django</span><span class="skill-note">Velora 2</span></li>
+              <li><span class="skill-name">Django REST Framework</span><span class="skill-note">Velora 2 API</span></li>
+              <li class="skill--developing"><span class="skill-name">PHP</span><span class="skill-note">Developing, used in Hunter System</span></li>
+            </ul>
+          </section>
+
+          <section class="skill-group" aria-labelledby="skills-databases">
+            <h3 id="skills-databases">Databases</h3>
+            <ul class="skill-list">
+              <li><span class="skill-name">PostgreSQL</span><span class="skill-note">Velora 2</span></li>
+              <li><span class="skill-name">MySQL / MariaDB</span><span class="skill-note">Hunter System</span></li>
+            </ul>
+          </section>
+
+          <section class="skill-group" aria-labelledby="skills-frontend">
+            <h3 id="skills-frontend">Frontend</h3>
+            <ul class="skill-list">
+              <li><span class="skill-name">HTML</span><span class="skill-note">Velora 2, Hunter System</span></li>
+              <li><span class="skill-name">CSS</span><span class="skill-note">Velora 2, Hunter System</span></li>
+              <li><span class="skill-name">JavaScript</span><span class="skill-note">Velora 2, Hunter System</span></li>
+              <li class="skill--developing"><span class="skill-name">React</span><span class="skill-note">Developing, used in Velora 2 and Hunter System</span></li>
+            </ul>
+          </section>
+
+          <section class="skill-group" aria-labelledby="skills-tools">
+            <h3 id="skills-tools">Tools and systems</h3>
+            <ul class="skill-list">
+              <li><span class="skill-name">Git</span><span class="skill-note">Version control for my projects</span></li>
+              <li class="skill--developing"><span class="skill-name">Linux</span><span class="skill-note">Developing</span></li>
+            </ul>
+          </section>
+        </div>
       </div>
     </section>
 
     <section id="about" class="section" aria-labelledby="about-title">
-      <div class="container">
+      <div class="container about">
         <h2 id="about-title">About</h2>
+        <div class="about-text">
+          <p class="about-lead">I’m Nikhil Modi, a B.Sc. IT student focused on Python development, backend APIs, automation and full&#8209;stack applications.</p>
+          <p>I learn by building complete projects rather than isolated exercises. Velora 2 took me from database design through a Django REST API to a React interface used by customers, staff and owners. Hunter System pairs a React interface with a PHP API that decides scores, ranks and rewards on the server.</p>
+          <p>I’m looking for an internship where I can contribute to real backend or full-stack work and learn from an experienced team.</p>
+        </div>
       </div>
     </section>
 
     <section id="education" class="section" aria-labelledby="education-title">
       <div class="container">
         <h2 id="education-title">Education</h2>
+
+        <div class="edu">
+          <div class="edu-main">
+            <h3>L. J. Institute of Computer Applications</h3>
+            <p class="edu-degree">B.Sc. Information Technology</p>
+            <dl class="facts">
+              <div>
+                <dt>Current</dt>
+                <dd>Semester 3</dd>
+              </div>
+              <div>
+                <dt>Graduating</dt>
+                <dd>2028 (expected)</dd>
+              </div>
+            </dl>
+          </div>
+
+          <section class="results" aria-labelledby="results-title">
+            <h3 id="results-title" class="results-title">Semester results</h3>
+            <ul class="results-list">
+              <li>
+                <span class="result-value">9.41</span>
+                <span class="result-label">Semester 1 SGPA</span>
+              </li>
+              <li>
+                <span class="result-value">9.05</span>
+                <span class="result-label">Semester 2 SGPA</span>
+              </li>
+            </ul>
+          </section>
+        </div>
       </div>
     </section>
 
     <section id="services" class="section" aria-labelledby="services-title">
       <div class="container">
-        <h2 id="services-title">How I can help</h2>
+        <header class="section-head">
+          <h2 id="services-title">How I can help</h2>
+          <p>Selected work I can take on now. Every project starts with a conversation about scope, so we agree on what is realistic before any work begins.</p>
+        </header>
+
+        <ul class="services">
+          <li class="service">
+            <h3>Python automation scripts</h3>
+            <p>Scripts that take over repetitive tasks, such as processing files, cleaning data or collecting information.</p>
+          </li>
+          <li class="service">
+            <h3>Django REST API development</h3>
+            <p>APIs built with Django REST Framework: data models, endpoints, authentication and role-based permissions, as in Velora 2.</p>
+          </li>
+          <li class="service">
+            <h3>Backend development and API integration</h3>
+            <p>Server-side logic and database design, and connecting a frontend or another service to an API.</p>
+          </li>
+          <li class="service">
+            <h3>Full-stack web applications</h3>
+            <p>A complete application from database to interface, delivered in small working steps. Velora 2 and Hunter System are examples.</p>
+          </li>
+        </ul>
       </div>
     </section>
 
     <section id="contact" class="section" aria-labelledby="contact-title">
       <div class="container">
-        <h2 id="contact-title">Contact</h2>
+        <div class="contact">
+          <div class="contact-main">
+            <h2 id="contact-title">Contact</h2>
+            <p class="contact-lead">I’m open to internship opportunities in Python, backend and full-stack development. If you have a project that needs a Python or Django developer, I’m happy to talk about that too.</p>
+            <div class="contact-actions">
+              <a class="button button--primary" href="mailto:nikhilmodi9638@gmail.com?subject=Internship%20opportunity">Open to internship opportunities</a>
+              <a class="button button--secondary" href="mailto:nikhilmodi9638@gmail.com?subject=Project%20enquiry">Discuss a project</a>
+            </div>
+          </div>
+
+          <ul class="contact-links">
+            <li>
+              <span class="contact-label">Email</span>
+              <a href="mailto:nikhilmodi9638@gmail.com">nikhilmodi9638@gmail.com</a>
+            </li>
+            <li>
+              <span class="contact-label">GitHub</span>
+              <a href="https://github.com/Nikhil9638" target="_blank" rel="noopener noreferrer">Nikhil9638<span class="visually-hidden"> on GitHub (opens in a new tab)</span></a>
+            </li>
+            <li>
+              <span class="contact-label">LinkedIn</span>
+              <a href="https://www.linkedin.com/in/nikhil-modi-7894a32b6/" target="_blank" rel="noopener noreferrer">Nikhil Modi<span class="visually-hidden"> on LinkedIn (opens in a new tab)</span></a>
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer"></footer>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2026 Nikhil Modi</p>
+      <a href="#top">Back to top</a>
+    </div>
+  </footer>
 </body>
 </html>

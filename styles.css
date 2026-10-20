@@ -3,6 +3,7 @@
    1. Fonts   2. Tokens   3. Reset & base   4. Layout   5. Utilities
    6. Buttons   7. Header & navigation   8. Hero   9. Section heads
    10. Case studies (shared)   11. Velora 2   12. Hunter System
+   13. Skills   14. About   15. Education   16. Services   17. Contact   18. Footer
    ========================================================================== */
 
 /* 1. Fonts — self-hosted, SIL OFL 1.1 (licences in public/assets/fonts/) */
@@ -242,11 +243,12 @@ textarea {
   align-items: center;
   justify-content: center;
   min-height: 3rem;
-  padding: 0 var(--space-5);
+  padding: var(--space-2) var(--space-5);
   border: 1px solid transparent;
   border-radius: var(--radius-control);
   font-weight: 600;
   line-height: 1.2;
+  text-align: center;
   text-decoration: none;
   transition: background-color var(--duration-quick) ease, border-color var(--duration-quick) ease, color var(--duration-quick) ease;
 }
@@ -942,6 +944,278 @@ textarea {
     grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
     gap: var(--space-8);
   }
+}
+
+/* 13. Skills — category columns; "developing" is stated in words, not only colour */
+.skills-grid {
+  display: grid;
+  gap: var(--space-7) var(--space-6);
+  margin-top: var(--space-7);
+}
+
+.skill-group {
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--line-strong);
+}
+
+.skill-group h3 {
+  font-size: var(--step-1);
+}
+
+.skill-list {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+  padding: 0;
+  list-style: none;
+}
+
+.skill-list li {
+  display: grid;
+}
+
+.skill-name {
+  font-weight: 600;
+}
+
+.skill-note {
+  color: var(--fog);
+  font-size: var(--step--1);
+}
+
+.skill--developing .skill-name {
+  color: var(--fog);
+  font-weight: 500;
+}
+
+@media (min-width: 40rem) {
+  .skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64rem) {
+  .skills-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* 14. About — heading beside the text on wide screens */
+.about {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.about-text > * + * {
+  margin-top: var(--space-4);
+}
+
+.about-text p {
+  color: var(--fog);
+}
+
+.about-text .about-lead {
+  color: var(--paper);
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+@media (min-width: 60rem) {
+  .about {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: var(--space-8);
+  }
+}
+
+/* 15. Education — one entry beside its two semester results */
+.edu {
+  display: grid;
+  gap: var(--space-7);
+  margin-top: var(--space-7);
+}
+
+.edu-degree {
+  margin-top: var(--space-2);
+  color: var(--fog);
+  font-size: var(--step-1);
+}
+
+.edu .facts {
+  max-width: 26rem;
+  margin-top: var(--space-5);
+}
+
+.results {
+  padding: var(--space-5) var(--space-6) var(--space-6);
+  background: var(--deck);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+}
+
+.results .results-title {
+  color: var(--fog);
+  font-family: var(--font-body);
+  font-size: var(--step--1);
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.results-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-5);
+  margin-top: var(--space-4);
+  padding: 0;
+  list-style: none;
+}
+
+.results-list li {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.result-value {
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  font-weight: 650;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.result-label {
+  color: var(--fog);
+  font-size: var(--step--1);
+}
+
+@media (min-width: 60rem) {
+  .edu {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    align-items: start;
+    gap: var(--space-8);
+  }
+}
+
+/* 16. Services — a plain two-column list, not cards */
+.services {
+  display: grid;
+  gap: var(--space-6) var(--space-7);
+  margin-top: var(--space-7);
+  padding: 0;
+  list-style: none;
+}
+
+.service {
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--line-strong);
+}
+
+.service h3 {
+  font-size: var(--step-1);
+}
+
+.service p {
+  margin-top: var(--space-2);
+  color: var(--fog);
+}
+
+@media (min-width: 48rem) {
+  .services {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* 17. Contact — the closing panel */
+.contact {
+  display: grid;
+  gap: var(--space-7);
+  padding: clamp(var(--space-5), 1rem + 3vw, var(--space-8));
+  background: var(--deck);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-feature);
+}
+
+.contact-lead {
+  margin-top: var(--space-4);
+  color: var(--fog);
+  font-size: var(--step-1);
+  line-height: 1.5;
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+@media (max-width: 30rem) {
+  .contact-actions .button {
+    width: 100%;
+  }
+}
+
+.contact-links {
+  align-self: center;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.contact-links li {
+  display: grid;
+  gap: var(--space-1);
+  padding-block: var(--space-4);
+  border-bottom: 1px solid var(--line);
+}
+
+.contact-label {
+  color: var(--fog);
+  font-size: var(--step--1);
+}
+
+.contact-links a {
+  justify-self: start;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+  text-decoration-color: var(--line-strong);
+  transition: text-decoration-color var(--duration-quick) ease;
+}
+
+.contact-links a:hover {
+  text-decoration-color: var(--amber);
+}
+
+@media (min-width: 60rem) {
+  .contact {
+    grid-template-columns: minmax(0, 1.5fr) minmax(16rem, 1fr);
+    gap: var(--space-8);
+  }
+}
+
+/* 18. Footer */
+.site-footer {
+  border-top: 1px solid var(--line);
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-block: var(--space-6);
+  color: var(--fog);
+  font-size: var(--step--1);
+}
+
+.footer-inner a {
+  text-decoration-color: var(--line-strong);
+}
+
+.footer-inner a:hover {
+  color: var(--paper);
 }
 
 /* Reduced motion: no smooth scrolling, no transitions or animations */

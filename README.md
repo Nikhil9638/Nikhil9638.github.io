@@ -2,7 +2,7 @@
 
 A static, single-page portfolio for Nikhil Modi, a B.Sc. IT student and Python / full-stack developer. Built with plain HTML, CSS and JavaScript: no framework, no build step, no package manager, no backend.
 
-> **Status:** in progress (Phases 1–2 of 6 complete: design system, navigation and hero).
+> **Status:** in progress (Phases 1–4 of 6 complete: all sections built; polish, QA and deployment guide remain).
 
 ## Files
 
